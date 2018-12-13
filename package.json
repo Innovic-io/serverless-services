@@ -1,0 +1,43 @@
+{
+  "name": "serverless-services",
+  "version": "0.0.1",
+  "description": "Serverless Services.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "tests"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.224.1",
+    "syllable": "^3.0.0",
+    "request": "^2.85.0",
+    "request-promise": "^4.2.2"
+  },
+  "devDependencies": {
+    "dotenv": "^5.0.1",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.11.0",
+    "jest": "^21.2.1",
+    "jsdoc": "^3.5.5",
+    "serverless-aws-documentation": "^1.1.0",
+    "serverless-offline": "^3.25.12",
+    "serverless-offline-scheduler": "^0.3.4"
+  },
+  "scripts": {
+    "test": "jest",
+    "start": "IS_OFFLINE=true serverless offline start --stage dev",
+    "deploy": "serverless deploy"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "coverageReporters": [
+      "json",
+      "lcov",
+      "html",
+      "text"
+    ]
+  },
+  "lint-staged": "eslint `git diff --staged --diff-filter=AM --name-only | grep .js$ | tr '\n' ' '`",
+  "author": "Miroslav Maksimovic <miroslav.maksimovic95@gmail.com>"
+}

@@ -1,0 +1,45 @@
+# Javascript Node CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+#
+version: 2
+jobs:
+  build:
+    working_directory: ~/serverless-services
+
+    docker:
+      # specify the version you desire here
+      - image: circleci/node:8.10
+
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+            - dependencies-cache-{{ checksum "package.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - dependencies-cache
+
+      - run:
+          name: Install Serverless CLI and dependencies
+          command: |
+            sudo npm i -g serverless
+            npm install
+
+      # run tests
+      - run:
+          name: Run tests with code coverage
+          command: npm test --coverage
+
+      # deploy app
+      - run:
+          name: Deploy application
+          command: sls deploy -v --stage $CIRCLE_BRANCH
+          # command: sls deploy -v --stage $CIRCLE_BRANCH --service_user $SERVICE_USER --service_sec $SERVICE_SEC
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: dependencies-cache-{{ checksum "package.json" }}
+

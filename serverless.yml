@@ -1,0 +1,166 @@
+# Welcome to Serverless!
+#
+# This file is the main config file for your service.
+# It's very minimal at this point and uses default values.
+# You can always add more config options for more control.
+# We've included some commented out config examples here.
+# Just uncomment any of them to get that config option.
+#
+# For full config options, check the docs:
+#    docs.serverless.com
+#
+# Happy Coding!
+
+# The `service` block is the name of the service
+service: serverless-services
+
+plugins:
+  # - serverless-dynamodb-local #  DYNAMODB plugin
+  # - serverless-offline-scheduler # SCHEDULING plugin
+  - serverless-offline
+  - serverless-aws-documentation
+
+# exclude the code coverage files, examples and circle ci files
+package:
+  exclude:
+    - .circleci/**
+    - examples/**
+
+custom:
+
+  # You must have the documentation object
+  documentation:
+    # this is general info about the API
+    api:
+      info:
+        version: '2'
+        title: Serverless API
+        description: Some example API
+        termsOfService: https://innovic.io
+        contact:
+          name: Miroslav Maksimovic
+          url: https://innovic.io
+          email: miroslavmaksimovic95@gmail.com
+        license:
+          name: The license
+          url: https://www.github.com
+      tags:
+        - name: Tag1
+          description: The first tag
+        - name: Tag2
+          description: That other tag that we all love
+    # Now we describe all the models that we use
+    models:
+      - name: getCryptoCurrency
+        contentType: "application/json"
+        schema:
+          type: object
+      - name: getCryptoCurrencyBitcoinValue
+        contentType: "application/json"
+        schema:
+          type: object
+      - name: getCurrentWeather
+          contentType: "application/json"
+          schema:
+            type: object
+      - name: getWeatherForecast
+          contentType: "application/json"
+          schema:
+            type: object
+      - name: getWeatherForecastDaily
+          contentType: "application/json"
+          schema:
+            type: object
+      - name: getWeatherForecastDaily
+          contentType: "application/json"
+          schema:
+            type: object
+      - name: getIP
+          contentType: "application/json"
+          schema:
+            type: object
+
+
+      # serverless-offline:
+      #   provider:
+      #     environment: ${file(env.yml)}
+
+# You can pin your service to only deploy with a specific Serverless version
+# Check out our docs for more details
+# frameworkVersion: "=1.27.3"
+
+# The `provider` block defines where your service will be deployed
+provider:
+  name: aws
+  runtime: nodejs8.10
+  stage: ${opt:stage} # set the stage based on what Circle Branch is deploying
+  region: eu-west-2 # default is us-east-1
+    # environment: ${file(env.yml)} # for dev - serverless-offline, alternatively pass env vals as options
+    # environment:
+  # SERVICE_USER: ${opt:service_user} # pass in your environment variables as options from Circle
+  # SERVICE_SEC: ${opt:service_sec}
+  # SERVICE_URL: https://innovic.io/
+  cfLogs: true # enable logging
+  apiKeys:
+    -api-key # https://serverless.com/framework/docs/providers/aws/events/apigateway#setting-api-keys-for-your-rest-api
+  iamRoleStatements:
+    - Effect: Allow
+      Action: # logging permissions
+        - logs:CreateLogGroup
+        - logs:CreateLogStream
+        - logs:DescribeLogStreams
+        - logs:PutLogEvents
+        - logs:CreateSubscriptionFilter
+        - logs:PutSubscriptionFilter
+      Resource: "arn:aws:logs:${opt:region, self:provider.region}:serverless:log-group:/aws/cognito/*"
+
+# The `functions` block defines what code to deploy
+functions:
+  getCryptoCurrency:
+    handler: services/cryptocurrency/cryptocurrency.getCryptoCurrency
+    events:
+      - http:
+          path: /cryptocurrency
+          method: get
+          private: true
+          cors: true
+  getCryptoCurrencyBitcoinValue:
+    handler: services/cryptocurrency/cryptocurrency.getCryptoCurrencyBitcoinValue
+    events:
+      - http:
+          path: /cryptocurrency/bitcoinvalue
+          method: get
+          private: true
+          cors: true
+  getCurrentWeather:
+    handler: services/weather/weather.getWeather
+    events:
+      - http:
+          path: /weather
+          method: get
+          private: true
+          cors: true
+  getWeatherForecast:
+    handler: services/weather/weather.getWeatherForecast
+    events:
+      - http:
+          path: /forecast
+          method: get
+          private: true
+          cors: true
+  getWeatherForecastDaily:
+    handler: services/weather/weather.getWeatherForecastDaily
+    events:
+      - http:
+          path: /forecast/daily
+          method: get
+          private: true
+          cors: true
+  getIP:
+    handler: services/ip/ip.getIP
+    events:
+      - http:
+          path: /ip
+          method: get
+          private: true
+          cors: true
