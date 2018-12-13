@@ -1,3 +1,5 @@
+.idea
+
 # Serverless directories
 .serverless
 env.yml
