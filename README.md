@@ -24,6 +24,7 @@ Deploying:
 
 ` serverless deploy`
 
+``````
 Deploying a single function:
 
 ` serverless deploy function --function functionName
@@ -35,16 +36,9 @@ Deploying:
 
 ` serverless deploy`
 
-Docs:
-
-[docs](https://github.com/Innovic-io/serverless-services/blob/master/DOCS.md)
-
-Deploying a single function:
-
-` serverless deploy function --function functionName
-`
-
 ``````
+Docs: [docs](https://github.com/Innovic-io/serverless-services/blob/master/DOCS.md)
+
 ## Useful Resources
 
 | Description | Link     |
@@ -61,7 +55,6 @@ Deploying a single function:
 | secured API example | [gh repo](https://github.com/pmuens/serverless-secured-api) |
 | Environment Vars | [Serverless Docs](https://serverless.com/framework/docs/providers/aws/guide/variables/) |
 | Scheduling on Serverless | [docs](https://serverless.com/framework/docs/providers/aws/events/schedule/) |
-``````
 
 <table style="border: 0">
   <tr>
@@ -76,4 +69,3 @@ Deploying a single function:
     </td>
   </tr>
 </table>
-
