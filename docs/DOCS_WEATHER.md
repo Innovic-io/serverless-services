@@ -1,14 +1,14 @@
 # Weather
 
-### **URL**:  https://localhost:3000/**weather?q=Pale**
+### **URL**:  https://localhost:3000/weather?q=Pale
 
 Current weather. See more info [here](https://openweathermap.org/current).
 
-### **URL**:  https://localhost:3000/**forecast?q=Pale**
+### **URL**:  https://localhost:3000/forecast?q=Pale
 
 5 days forecast. See more info [here](https://openweathermap.org/current).
 
-### **URL**:  https://localhost:3000/**forecast/daily?q=Pale**
+### **URL**:  https://localhost:3000/forecast/daily?q=Pale
 
 16 days forecast. See more info [here](https://openweathermap.org/forecast16).
 

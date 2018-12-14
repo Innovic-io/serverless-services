@@ -1,6 +1,6 @@
 # Cryptocurrency
 
-### **URL**:  https://localhost:3000/**cryptocurrency**
+### **URL**:  https://localhost:3000/cryptocurrency
 
 **No Parameters**
 
@@ -35,7 +35,7 @@ Response:
 }
 ```
 
-### **URL**:  https://localhost:3000/**cryptocurrency/?currency=USD&value=500**
+### **URL**:  https://localhost:3000/cryptocurrency/?currency=USD&value=500
 
 Convert x value in the provided currency to btc.
 

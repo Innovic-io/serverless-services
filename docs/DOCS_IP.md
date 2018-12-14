@@ -1,6 +1,6 @@
 # IP address
 
-### **URL**:  https://localhost:3000/**ip**
+### **URL**:  https://localhost:3000/ip
 
 **No Parameters**
 
