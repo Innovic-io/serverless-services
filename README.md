@@ -46,3 +46,17 @@ Deploying a single function:
 | secured API example | [gh repo](https://github.com/pmuens/serverless-secured-api) |
 | Environment Vars | [Serverless Docs](https://serverless.com/framework/docs/providers/aws/guide/variables/) |
 | Scheduling on Serverless | [docs](https://serverless.com/framework/docs/providers/aws/events/schedule/) |
+
+<table style="border: 0">
+  <tr>
+    <td><img width="200" src="http://innovic.io/assets/logo-small.png" /></td>
+    <td>
+      <ul>
+        <li>INNOVIC doo</li>
+        <li>Software consulting company for building full stack solutions.</li>
+        <li>Proficient in: NodeJS, TypeScript, Angular, MongoDB... &lt;any&gt;.js library :)</li>
+        <li><b>You have project for us? hello@innovic.io</b></li>
+      </ul>
+    </td>
+  </tr>
+</table>
